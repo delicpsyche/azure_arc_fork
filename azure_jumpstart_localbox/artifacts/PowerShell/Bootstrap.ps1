@@ -138,10 +138,16 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Write-Host "Installing PowerShell modules..."
 
 Install-Module -Name Microsoft.PowerShell.PSResourceGet -Force
-$modules = @("Az", "Az.ConnectedMachine", "Azure.Arc.Jumpstart.Common", "Azure.Arc.Jumpstart.LocalBox", "Microsoft.PowerShell.SecretManagement", "Pester")
+
+# Install Az module using Install-Module (works better than Install-PSResource for the meta-module)
+Write-Host "Installing Az module..."
+Install-Module -Name Az -Scope AllUsers -Force -AllowClobber -ErrorAction Continue
+
+# Install other modules using Install-PSResource
+$modules = @("Az.ConnectedMachine", "Azure.Arc.Jumpstart.Common", "Azure.Arc.Jumpstart.LocalBox", "Microsoft.PowerShell.SecretManagement", "Pester")
 
 foreach ($module in $modules) {
-    Install-PSResource -Name $module -Scope AllUsers -Quiet -AcceptLicense -TrustRepository
+    Install-PSResource -Name $module -Scope AllUsers -Quiet -AcceptLicense -TrustRepository -ErrorAction Continue
 }
 
 # Explicitly import Az.Resources module to ensure commands are available
