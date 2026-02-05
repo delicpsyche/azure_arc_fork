@@ -47,13 +47,13 @@
 
     NodeHostConfig = @(
         @{
-            Hostname    = "AzLHOST1"
+            Hostname    = "intprd1"
             IP          = "192.168.1.12/24"
             StorageAIP  = "10.71.1.10"
             StorageBIP  = "10.71.2.10"
         },
         @{
-            Hostname    = "AzLHOST2"
+            Hostname    = "intprd2"
             IP          = "192.168.1.13/24"
             StorageAIP  = "10.71.1.11"
             StorageBIP  = "10.71.2.11"
@@ -71,19 +71,19 @@
     FabricSwitch                         = "vSwitch-Fabric"
     FabricNIC                            = "FABRIC"
     ClusterVSwitchName                   = "hciSwitch"
-    ClusterName                          = "localboxcluster"
+    ClusterName                          = "mumazlocalcluster"
     WACVMName                            = "AdminCenter"
     ClusterSharedVolumePath              = "C:\ClusterStorage\S2D_vDISK1"
     LCMDeployUsername                    = "LocalBoxDeployUser"
-    LCMADOUName                          = "hcioudocs"
-    LCMDeploymentPrefix                  = "localbox"
+    LCMADOUName                          = "hcidc01"
+    LCMDeploymentPrefix                  = "azlocal"
 
     # ProductKeys
     GUIProductKey                        = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33"        # Product key for Windows Server 2019 (Desktop Experience) Datacenter Installation
 
     # SDN Lab Domain
-    SDNDomainFQDN                        = "jumpstart.local"                      # Limit name (not the .com) to 14 characters as the name will be used as the NetBIOS name.
-    DCName                               = "jumpstartdc"                          # Name of the domain controller virtual machine (limit to 14 characters)
+    SDNDomainFQDN                        = "marico.local"                      # Limit name (not the .com) to 14 characters as the name will be used as the NetBIOS name.
+    DCName                               = "mumdc01"                          # Name of the domain controller virtual machine (limit to 14 characters)
 
     # NAT Configuration
     natHostSubnet                        = "192.168.128.0/24"
@@ -159,8 +159,8 @@
     WACport                              = 443
 
     # AKS and Resource bridge variables
-    rbCustomLocationName                 = "jumpstart"
-    AKSworkloadClusterName               = "localbox-aks" # lowercase only
+    rbCustomLocationName                 = "mumbaidc01"
+    AKSworkloadClusterName               = "azloc-aks" # lowercase only
     AKSvnetname                          = "akshcivnet"
     AKSNodeStartIP                       = "10.10.0.101"
     AKSNodeEndIP                         = "10.10.0.199"

@@ -1,5 +1,6 @@
 ﻿Start-Transcript -Path $Env:LocalBoxLogsDir\New-LocalBoxCluster.log
 $starttime = Get-Date
+$prodresourceGroup = 'rg-hci-prod-01'
 
 # Import Configuration data file
 $Global:LocalBoxConfig = Import-PowerShellDataFile -Path $Env:LocalBoxConfigFile
